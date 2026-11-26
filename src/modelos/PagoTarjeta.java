@@ -13,13 +13,17 @@ public class PagoTarjeta implements MetodoPago {
 
     @Override
     public boolean procesarPago(double monto) {
-        // TODO [Issue #1 - Integrante 1]: Validar que monto > 0, imprimir un mensaje corto de cobro y retornar true.
-        return false;
+        if (monto <= 0) {
+            System.out.println("[Tarjeta] Monto invalido: " + monto);
+            return false;
+        }
+        System.out.println("[Tarjeta] Pago aprobado por $" + monto
+                + " para " + titular + " (**** " + ultimosCuatro + ").");
+        return true;
     }
 
     @Override
     public String obtenerNombreMetodo() {
-        // TODO [Issue #1 - Integrante 1]: Retornar el nombre del metodo incluyendo ultimosCuatro.
-        return "PENDIENTE_TARJETA";
+        return "Tarjeta (**** " + ultimosCuatro + ")";
     }
 }
